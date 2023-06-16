@@ -1,6 +1,6 @@
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
-    background-image: url("images/red_background.jpg");
+    background-image: url("red_background.jpg");
     background-size: cover;
     font-weight: bold;
     color: white;
@@ -40,3 +40,20 @@ button {
     font-size:150%;
     color:powderblue;
 }
+
+#result-el {
+    font-size:200%;
+    color:thistle;
+    font-weight:bold;
+}
+
+#card-pic-el {
+    height:150px;
+    width: 150px;
+}
+
+/* #card-pic {
+    display:flex;
+    margin-left:10%;
+
+} */

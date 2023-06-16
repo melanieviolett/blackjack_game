@@ -19,7 +19,7 @@ let playerEl = document.getElementById("player-el")
 let dealerEl = document.getElementById("dealer-el")
 let dealerCardsEl = document.getElementById("dealerCards-el")
 let dealerSumEl = document.getElementById("dealerSum-el")
-
+let resultEl = document.getElementById("result-el")
 playerEl.textContent = player.name 
 // above line used to add     + ": $" + player.chips
 
@@ -36,6 +36,11 @@ function getRandomCard() {
 
 function startGame() {
     isAlive = true
+    resultEl.textContent = ""
+    dealerCardsEl.textContent = "Cards:"
+    dealerSumEl.textContent = "Sum:"
+
+
     let firstCard = getRandomCard()
     let secondCard = getRandomCard()
     cards = [firstCard, secondCard]
@@ -46,7 +51,7 @@ function startGame() {
     let secondDealerCard = getRandomCard()
     dealerCards = [firstDealerCard, secondDealerCard]
     dealerSum = firstDealerCard + secondDealerCard
-
+    
     renderGame()
 }
 
@@ -75,6 +80,8 @@ function renderGame() {
     } else {
         message = "You're out of the game!"
         isAlive = false
+        resultEl.textContent = "Dealer wins"
+        dealerCardsEl.textContent += dealerCards[1] 
     }
     messageEl.textContent = message
 }
@@ -86,5 +93,64 @@ function newCard() {
         sum += card
         cards.push(card)
         renderGame()        
+    }
+}
+
+function displayDealerCard() {
+    dealerCardsEl.textContent = "Cards: "
+    for (let i = 0; i < dealerCards.length; i++) {
+        dealerCardsEl.textContent += dealerCards[i] + " "
+    }
+}
+
+
+function stand() {
+    console.log("Dealer sum: ", dealerSum)
+    console.log("Player sum: ", sum)
+
+    if (isAlive === true)
+    {
+        console.log("dealer cards: ", dealerCards)
+
+        while (dealerSum < 17)
+        {
+            let dealerCard = getRandomCard()
+            dealerCards.push(dealerCard)
+
+            displayDealerCard()
+            dealerSum += dealerCard
+        }
+        console.log("done")
+        console.log("dealer cards: ", dealerCards)
+
+        // dealer is now standing
+        dealerSumEl.textContent = "Sum: " + dealerSum
+        if (dealerSum > 21)
+        {
+            displayDealerCard()
+            resultEl.textContent = "Player wins"
+        }
+
+        else if (sum > dealerSum)
+        {
+            displayDealerCard()
+            resultEl.textContent = "Player wins"
+        }
+        else if (sum === dealerSum)
+        {
+            displayDealerCard()
+            resultEl.textContent = "Tie"
+        }
+        else if (sum < dealerSum)
+        {
+            displayDealerCard()
+            resultEl.textContent = "Dealer wins"
+        }
+        // game is over
+    }
+    else
+    {
+        resultEl.textContent = "Dealer wins"
+        dealerCardsEl.textContent += dealerCards[1] 
     }
 }
