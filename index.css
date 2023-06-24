@@ -1,5 +1,5 @@
 body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
+    font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
     background-image: url("red_background.jpg");
     background-size: cover;
     font-weight: bold;
@@ -22,13 +22,14 @@ h1 {
 
 button {
     color:seagreen;
+    height: 40px;
     width: 150px;
     background:lemonchiffon;
     padding-top: 5px;
     padding-bottom: 5px;
     font-weight: bold;
     border: none;
-    border-radius: 2px;
+    border-radius: 10px;
     margin: 2px 10px;
 }
 
@@ -52,6 +53,42 @@ button {
     width: 150px;
 }
 
+#name-el {
+    border-style:double;
+    border-color: thistle;
+    border-radius: 10px;
+    width:80%;
+}
+
+.modal-title {
+    color:seagreen;
+}
+
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:not(:disabled):not(:disabled):active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: seagreen;
+    color:white;
+    border:none;
+}
+
+/* .btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:visited,
+.btn-secondary:focus {
+    background-color:dimgray;
+    color:white;
+    border:none;
+} */
+
+
+/* .modal-body {
+    
+} */
 /* #card-pic {
     display:flex;
     margin-left:10%;

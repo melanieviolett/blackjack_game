@@ -1,5 +1,5 @@
 let player = {
-    name: "Melanie",
+    name: "",
     chips: 200
 }
 
@@ -20,8 +20,9 @@ let dealerEl = document.getElementById("dealer-el")
 let dealerCardsEl = document.getElementById("dealerCards-el")
 let dealerSumEl = document.getElementById("dealerSum-el")
 let resultEl = document.getElementById("result-el")
-playerEl.textContent = player.name 
+let nameEl = document.getElementById("name-el")
 // above line used to add     + ": $" + player.chips
+
 
 function getRandomCard() {
     let randomNumber = Math.floor( Math.random()*13 ) + 1
@@ -38,7 +39,7 @@ function startGame() {
     isAlive = true
     resultEl.textContent = ""
     dealerCardsEl.textContent = "Cards:"
-    dealerSumEl.textContent = "Sum:"
+    dealerSumEl.textContent = "Sum: "
 
 
     let firstCard = getRandomCard()
@@ -80,8 +81,10 @@ function renderGame() {
     } else {
         message = "You're out of the game!"
         isAlive = false
-        resultEl.textContent = "Dealer wins"
+        resultEl.textContent = "dealer wins"
+        message = "bust"
         dealerCardsEl.textContent += dealerCards[1] 
+        dealerSumEl.textContent += dealerSum
     }
     messageEl.textContent = message
 }
@@ -128,29 +131,43 @@ function stand() {
         if (dealerSum > 21)
         {
             displayDealerCard()
-            resultEl.textContent = "Player wins"
+            resultEl.textContent = "player wins"
+            message = "Game over"
         }
 
         else if (sum > dealerSum)
         {
             displayDealerCard()
-            resultEl.textContent = "Player wins"
+            resultEl.textContent = "player wins"
+            message = "Game over"
         }
         else if (sum === dealerSum)
         {
             displayDealerCard()
-            resultEl.textContent = "Tie"
+            resultEl.textContent = "tie"
+            message = "Game over"
         }
         else if (sum < dealerSum)
         {
             displayDealerCard()
-            resultEl.textContent = "Dealer wins"
+            resultEl.textContent = "dealer wins"
+            message = "Game over"
         }
         // game is over
+        messageEl.textContent = message
     }
     else
     {
-        resultEl.textContent = "Dealer wins"
+        resultEl.textContent = "dealer wins"
+        message = "Game over"
         dealerCardsEl.textContent += dealerCards[1] 
+        messageEl.textContent = message
     }
 }
+
+function savePlayerName() {
+    player.name = nameEl.value 
+    playerEl.textContent = player.name
+    nameEl.value = "" 
+}
+
