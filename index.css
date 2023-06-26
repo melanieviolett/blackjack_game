@@ -17,11 +17,11 @@ h1 {
 
 #player-el {
     font-size:150%;
-    color:plum
+    color:plum;
 }
 
 button {
-    color:seagreen;
+    color:rgb(87, 183, 129);
     height: 40px;
     width: 150px;
     background:lemonchiffon;
@@ -60,8 +60,20 @@ button {
     width:80%;
 }
 
+#change_pyr-el {
+    background-color:plum;
+    color:rgb(39, 39, 39);
+    font-style: italic;
+}
+
+#place_bets-el {
+    background-color:rgb(122, 214, 226);
+    color:rgb(39, 39, 39);
+    font-style: italic;
+}
+
 .modal-title {
-    color:seagreen;
+    color:rgb(87, 183, 129);
 }
 
 
@@ -70,27 +82,8 @@ button {
 .btn-primary:not(:disabled):not(:disabled):active,
 .btn-primary:visited,
 .btn-primary:focus {
-    background-color: seagreen;
+    background-color: rgb(87, 183, 129);
     color:white;
     border:none;
 }
 
-/* .btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:active,
-.btn-secondary:visited,
-.btn-secondary:focus {
-    background-color:dimgray;
-    color:white;
-    border:none;
-} */
-
-
-/* .modal-body {
-    
-} */
-/* #card-pic {
-    display:flex;
-    margin-left:10%;
-
-} */

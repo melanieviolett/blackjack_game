@@ -7,8 +7,16 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <!-- <div id="card-pic"><img id="card-pic-el" src="card_pile.jpg"></div> -->
         <h1>Blackjack</h1>
+        
+        <button type="button" id="change_pyr-el" class="btn" data-toggle="modal" data-target="#name_modal" style="font-size: smaller;">
+            change player name
+        </button>
+
+        <button type="button" id="place_bets-el" class="btn" style="font-size:smaller">
+        place bets
+        </button>
+
         <p id="message-el">Want to play a round?</p>
         <p id="player-el"></p>
         <p id="cards-el">Cards:</p>
@@ -24,6 +32,8 @@
         </div>
 
         <p id="result-el"></p>
+
+
   
         <div class="modal fade" id="name_modal" tabindex="-1" role="dialog" aria-labelledby="nameModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
