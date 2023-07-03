@@ -25,6 +25,8 @@ let playerChipsEl = document.getElementById("player_chips-el")
 let betAmountEl = document.getElementById("bet_amt-el")
 // above line used to add     + ": $" + player.chips
 
+let pagePcEl = document.getElementById("page_pc-el")
+
 
 function getRandomCard() {
     let randomNumber = Math.floor( Math.random()*13 ) + 1
@@ -38,6 +40,8 @@ function getRandomCard() {
 }
 
 function startGame() {
+    pagePcEl.textContent = player.chips
+
     isAlive = true
     resultEl.textContent = ""
     dealerCardsEl.textContent = "Cards:"
@@ -82,8 +86,6 @@ function renderGame() {
         resultEl.textContent = "dealer wins"
         message = "bust"
         player.chips = player.chips - parseInt(betAmountEl.value)
-        console.log(player.chips)
-
         dealerCardsEl.textContent += dealerCards[1] 
         dealerSumEl.textContent += dealerSum
     }
@@ -130,8 +132,6 @@ function stand() {
             displayDealerCard()
             resultEl.textContent = "player wins"
             player.chips = player.chips + parseInt(betAmountEl.value)
-        console.log(player.chips)
-
             message = "Game over"
         }
 
@@ -140,8 +140,6 @@ function stand() {
             displayDealerCard()
             resultEl.textContent = "player wins"
             player.chips = player.chips + parseInt(betAmountEl.value)
-        console.log(player.chips)
-
             message = "Game over"
         }
         else if (sum === dealerSum)
@@ -155,8 +153,6 @@ function stand() {
             displayDealerCard()
             resultEl.textContent = "dealer wins"
             player.chips = player.chips - parseInt(betAmountEl.value)
-        console.log(player.chips)
-
             message = "Game over"
         }
         // game is over
@@ -166,7 +162,6 @@ function stand() {
     {
         resultEl.textContent = "dealer wins"
         player.chips = player.chips - parseInt(betAmountEl.value)
-        console.log(player.chips)
         message = "Game over"
         dealerCardsEl.textContent += dealerCards[1] 
         messageEl.textContent = message
@@ -181,4 +176,5 @@ function savePlayerName() {
 
 function savePlayerChips() {
     playerChipsEl.textContent = player.chips
+    pagePcEl.textContent = player.chips
 }

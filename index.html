@@ -18,7 +18,12 @@
         </button>
 
         <p id="message-el">Want to play a round?</p>
-        <p id="player-el"></p>
+        <div class="d-flex flex-row justify-content-center">
+            <p id="player-el" class="mr-4"></p>
+            <h6 class="mt-2" id="chipsp-el"> chips: </h6>
+            <p id="page_pc-el"></p>
+        </div>
+        
         <p id="cards-el">Cards:</p>
         <p id="sum-el">Sum:</p>
         <button onclick="startGame()">start game</button>
@@ -32,7 +37,6 @@
         </div>
 
         <p id="result-el"></p>
-
 
         <!-- change player name modal -->
         <div class="modal fade" id="name_modal" tabindex="-1" role="dialog" aria-labelledby="nameModalLabel" aria-hidden="true">
