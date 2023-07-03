@@ -1,3 +1,6 @@
+console.log(window.innerWidth)
+console.log(window.innerHeight)
+
 let player = {
     name: "",
     chips: 50
@@ -25,6 +28,12 @@ const playerChipsEl = document.getElementById("player_chips-el")
 const betAmountEl = document.getElementById("bet_amt-el")
 const pagePcEl = document.getElementById("page_pc-el")
 
+const newGameEl = document.getElementById("newGame-el")
+const hitEl = document.getElementById("hit-el")
+const standEl = document.getElementById("stand-el")
+const placeBetsEl = document.getElementById("place_bets-el")
+const chipChangesEl = document.getElementById("saveChipChanges-el")
+const savePlayerNameEl = document.getElementById("savePlayerName-el")
 
 function getRandomCard() {
     let randomNumber = Math.floor( Math.random()*13 ) + 1
@@ -37,7 +46,9 @@ function getRandomCard() {
     }
 }
 
-function startGame() {
+newGameEl.addEventListener('click', function() {
+
+    stopConfetti()
     pagePcEl.textContent = player.chips
     hasBlackJack = false
 
@@ -58,7 +69,7 @@ function startGame() {
     dealerSum = firstDealerCard + secondDealerCard
     
     renderGame()
-}
+})
 
 function renderGame() {
     cardsEl.textContent = "Cards: "
@@ -86,14 +97,14 @@ function renderGame() {
     messageEl.textContent = message
 }
 
-function newCard() {
+hitEl.addEventListener('click', function() {
     if (isAlive === true && hasBlackJack === false) {
         let card = getRandomCard()
         sum += card
         cards.push(card)
         renderGame()        
     }
-}
+})
 
 function displayDealerCard() {
     dealerCardsEl.textContent = "Cards: "
@@ -103,7 +114,7 @@ function displayDealerCard() {
 }
 
 
-function stand() {
+standEl.addEventListener('click', function() {
     console.log("Dealer sum: ", dealerSum)
     console.log("Player sum: ", sum)
 
@@ -145,18 +156,23 @@ function stand() {
     {
         dealerWin(betAmountEl)
     }
-}
+})
 
-function savePlayerName() {
+savePlayerNameEl.addEventListener('click', function() {
     player.name = nameEl.value 
     playerEl.textContent = player.name
     nameEl.value = ""
-}
+})
 
-function savePlayerChips() {
+placeBetsEl.addEventListener('click', function() {
     playerChipsEl.textContent = player.chips
     pagePcEl.textContent = player.chips
-}
+})
+
+chipChangesEl.addEventListener('click', function(){
+    playerChipsEl.textContent = player.chips
+    pagePcEl.textContent = player.chips
+})
 
 function dealerWin(betAmountEl) {
     displayDealerCard()
@@ -170,9 +186,12 @@ function dealerWin(betAmountEl) {
     isAlive = false
 }
 
+
+
 function playerWin(betAmountEl) {
     displayDealerCard()
     resultEl.textContent = "player wins"
+    startConfetti()
     if (Number.isInteger(parseInt(betAmountEl.value)))
     {
         player.chips = player.chips + parseInt(betAmountEl.value)
@@ -180,5 +199,4 @@ function playerWin(betAmountEl) {
     message = "Game over"
     messageEl.textContent = message
     isAlive = false
-   
 }

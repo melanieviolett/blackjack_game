@@ -13,7 +13,7 @@
             change player name
         </button>
 
-        <button type="button" id="place_bets-el" onclick="savePlayerChips()" class="btn mb-3" data-toggle="modal" data-target="#bets_modal" style="font-size:smaller">
+        <button type="button" id="place_bets-el" class="btn mb-3" data-toggle="modal" data-target="#bets_modal" style="font-size:smaller">
         place bets
         </button>
 
@@ -26,9 +26,9 @@
         
         <p id="cards-el">Cards:</p>
         <p id="sum-el">Sum:</p>
-        <button onclick="startGame()">new game</button>
-        <button onclick="newCard()">hit</button>
-        <button onclick="stand()">stand</button>
+        <button id="newGame-el">new game</button>
+        <button id="hit-el">hit</button>
+        <button id="stand-el">stand</button>
 
         <div id="dealer-el">
             <p id="dealerTitle">Dealer</p>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
-                <button type="button" onclick="savePlayerName()" class="btn btn-primary">save changes</button>
+                <button type="button" id="savePlayerName-el" class="btn btn-primary">save changes</button>
                 </div>
             </div>
             </div>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
-                <button type="button" onclick=savePlayerChips() class="btn btn-primary">save changes</button>
+                <button type="button" id="saveChipChanges-el" class="btn btn-primary">save changes</button>
                 </div>
             </div>
             </div>
@@ -88,6 +88,8 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="confetti.js"></script>
+        
         <script>
             $(document).ready(function() {
             $('#name_modal').modal('show');
