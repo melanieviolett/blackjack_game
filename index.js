@@ -180,4 +180,5 @@ function playerWin(betAmountEl) {
     message = "Game over"
     messageEl.textContent = message
     isAlive = false
+   
 }
