@@ -9,11 +9,11 @@
     <body>
         <h1>Blackjack</h1>
         
-        <button type="button" id="change_pyr-el" class="btn" data-toggle="modal" data-target="#name_modal" style="font-size: smaller;">
+        <button type="button" id="change_pyr-el" class="btn mb-3" data-toggle="modal" data-target="#name_modal" style="font-size: smaller;">
             change player name
         </button>
 
-        <button type="button" id="place_bets-el" class="btn" style="font-size:smaller">
+        <button type="button" id="place_bets-el" onclick="savePlayerChips()" class="btn mb-3" data-toggle="modal" data-target="#bets_modal" style="font-size:smaller">
         place bets
         </button>
 
@@ -34,7 +34,7 @@
         <p id="result-el"></p>
 
 
-  
+        <!-- change player name modal -->
         <div class="modal fade" id="name_modal" tabindex="-1" role="dialog" aria-labelledby="nameModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -49,7 +49,32 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
-                <button type="button" onclick=savePlayerName() class="btn btn-primary">save changes</button>
+                <button type="button" onclick="savePlayerName()" class="btn btn-primary">save changes</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- chips modal -->
+        <div class="modal fade" id="bets_modal" tabindex="-1" role="dialog" aria-labelledby="placeBetsModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h6 class="modal-title" id="placeBetsModalLabel">enter the number of chips that you bet:</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex flex-row">
+                        <p class="text-secondary mr-2">Current number of chips: </p>
+                        <p class="text-secondary" id="player_chips-el"></p>
+                    </div>
+                <input id="bet_amt-el">
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+                <button type="button" onclick=savePlayerChips() class="btn btn-primary">save changes</button>
                 </div>
             </div>
             </div>

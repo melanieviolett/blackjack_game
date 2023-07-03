@@ -1,6 +1,6 @@
 let player = {
     name: "",
-    chips: 200
+    chips: 50
 }
 
 let cards = []
@@ -21,6 +21,8 @@ let dealerCardsEl = document.getElementById("dealerCards-el")
 let dealerSumEl = document.getElementById("dealerSum-el")
 let resultEl = document.getElementById("result-el")
 let nameEl = document.getElementById("name-el")
+let playerChipsEl = document.getElementById("player_chips-el")
+let betAmountEl = document.getElementById("bet_amt-el")
 // above line used to add     + ": $" + player.chips
 
 
@@ -68,21 +70,20 @@ function renderGame() {
         }
     }
     sumEl.textContent = "Sum: " + sum
-    // note: if dealer has blackjack, game is over. dealer only shows one card at first
-    // all players finish first and submit. then the dealer reveals the hidden(hole) card
-    // and decides ot hit or not. dealerCards[1] contains the hole card
-    //dealerSumEl.textContent = "Sum: " + dealerSum
-    // here
+
     if (sum <= 20) {
         message = "Do you want to draw a new card?"
     } else if (sum === 21) {
         message = "You've got Blackjack!"
         hasBlackJack = true
     } else {
-        message = "You're out of the game!"
+       message  = "You're out of the game!"
         isAlive = false
         resultEl.textContent = "dealer wins"
         message = "bust"
+        player.chips = player.chips - parseInt(betAmountEl.value)
+        console.log(player.chips)
+
         dealerCardsEl.textContent += dealerCards[1] 
         dealerSumEl.textContent += dealerSum
     }
@@ -113,8 +114,6 @@ function stand() {
 
     if (isAlive === true)
     {
-        console.log("dealer cards: ", dealerCards)
-
         while (dealerSum < 17)
         {
             let dealerCard = getRandomCard()
@@ -123,8 +122,6 @@ function stand() {
             displayDealerCard()
             dealerSum += dealerCard
         }
-        console.log("done")
-        console.log("dealer cards: ", dealerCards)
 
         // dealer is now standing
         dealerSumEl.textContent = "Sum: " + dealerSum
@@ -132,6 +129,9 @@ function stand() {
         {
             displayDealerCard()
             resultEl.textContent = "player wins"
+            player.chips = player.chips + parseInt(betAmountEl.value)
+        console.log(player.chips)
+
             message = "Game over"
         }
 
@@ -139,6 +139,9 @@ function stand() {
         {
             displayDealerCard()
             resultEl.textContent = "player wins"
+            player.chips = player.chips + parseInt(betAmountEl.value)
+        console.log(player.chips)
+
             message = "Game over"
         }
         else if (sum === dealerSum)
@@ -151,6 +154,9 @@ function stand() {
         {
             displayDealerCard()
             resultEl.textContent = "dealer wins"
+            player.chips = player.chips - parseInt(betAmountEl.value)
+        console.log(player.chips)
+
             message = "Game over"
         }
         // game is over
@@ -159,6 +165,8 @@ function stand() {
     else
     {
         resultEl.textContent = "dealer wins"
+        player.chips = player.chips - parseInt(betAmountEl.value)
+        console.log(player.chips)
         message = "Game over"
         dealerCardsEl.textContent += dealerCards[1] 
         messageEl.textContent = message
@@ -171,3 +179,6 @@ function savePlayerName() {
     nameEl.value = "" 
 }
 
+function savePlayerChips() {
+    playerChipsEl.textContent = player.chips
+}
