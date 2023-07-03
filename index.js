@@ -12,20 +12,18 @@ let dealerSum = 0
 let hasBlackJack = false
 let isAlive = false
 let message = ""
-let messageEl = document.getElementById("message-el")
-let sumEl = document.getElementById("sum-el")
-let cardsEl = document.getElementById("cards-el")
-let playerEl = document.getElementById("player-el")
-let dealerEl = document.getElementById("dealer-el")
-let dealerCardsEl = document.getElementById("dealerCards-el")
-let dealerSumEl = document.getElementById("dealerSum-el")
-let resultEl = document.getElementById("result-el")
-let nameEl = document.getElementById("name-el")
-let playerChipsEl = document.getElementById("player_chips-el")
-let betAmountEl = document.getElementById("bet_amt-el")
-// above line used to add     + ": $" + player.chips
-
-let pagePcEl = document.getElementById("page_pc-el")
+const messageEl = document.getElementById("message-el")
+const sumEl = document.getElementById("sum-el")
+const cardsEl = document.getElementById("cards-el")
+const playerEl = document.getElementById("player-el")
+const dealerEl = document.getElementById("dealer-el")
+const dealerCardsEl = document.getElementById("dealerCards-el")
+const dealerSumEl = document.getElementById("dealerSum-el")
+const resultEl = document.getElementById("result-el")
+const nameEl = document.getElementById("name-el")
+const playerChipsEl = document.getElementById("player_chips-el")
+const betAmountEl = document.getElementById("bet_amt-el")
+const pagePcEl = document.getElementById("page_pc-el")
 
 
 function getRandomCard() {
@@ -41,12 +39,12 @@ function getRandomCard() {
 
 function startGame() {
     pagePcEl.textContent = player.chips
+    hasBlackJack = false
 
     isAlive = true
     resultEl.textContent = ""
     dealerCardsEl.textContent = "Cards:"
     dealerSumEl.textContent = "Sum: "
-
 
     let firstCard = getRandomCard()
     let secondCard = getRandomCard()
@@ -64,7 +62,6 @@ function startGame() {
 
 function renderGame() {
     cardsEl.textContent = "Cards: "
-
     dealerCardsEl.textContent = "Cards: "
 
     for (let i = 0; i < cards.length; i++) {
@@ -81,17 +78,13 @@ function renderGame() {
         message = "You've got Blackjack!"
         hasBlackJack = true
     } else {
-       message  = "You're out of the game!"
-        isAlive = false
-        resultEl.textContent = "dealer wins"
+        message  = "You're out of the game!"
+        dealerWin(betAmountEl)
         message = "bust"
-        player.chips = player.chips - parseInt(betAmountEl.value)
-        dealerCardsEl.textContent += dealerCards[1] 
         dealerSumEl.textContent += dealerSum
     }
     messageEl.textContent = message
 }
-
 
 function newCard() {
     if (isAlive === true && hasBlackJack === false) {
@@ -129,52 +122,62 @@ function stand() {
         dealerSumEl.textContent = "Sum: " + dealerSum
         if (dealerSum > 21)
         {
-            displayDealerCard()
-            resultEl.textContent = "player wins"
-            player.chips = player.chips + parseInt(betAmountEl.value)
-            message = "Game over"
+            playerWin(betAmountEl)
         }
 
         else if (sum > dealerSum)
         {
-            displayDealerCard()
-            resultEl.textContent = "player wins"
-            player.chips = player.chips + parseInt(betAmountEl.value)
-            message = "Game over"
+            playerWin(betAmountEl)
         }
         else if (sum === dealerSum)
         {
             displayDealerCard()
             resultEl.textContent = "tie"
             message = "Game over"
+            messageEl.textContent = message
         }
         else if (sum < dealerSum)
         {
-            displayDealerCard()
-            resultEl.textContent = "dealer wins"
-            player.chips = player.chips - parseInt(betAmountEl.value)
-            message = "Game over"
+            dealerWin(betAmountEl)
         }
-        // game is over
-        messageEl.textContent = message
     }
     else
     {
-        resultEl.textContent = "dealer wins"
-        player.chips = player.chips - parseInt(betAmountEl.value)
-        message = "Game over"
-        dealerCardsEl.textContent += dealerCards[1] 
-        messageEl.textContent = message
+        dealerWin(betAmountEl)
     }
 }
 
 function savePlayerName() {
     player.name = nameEl.value 
     playerEl.textContent = player.name
-    nameEl.value = "" 
+    nameEl.value = ""
 }
 
 function savePlayerChips() {
     playerChipsEl.textContent = player.chips
     pagePcEl.textContent = player.chips
+}
+
+function dealerWin(betAmountEl) {
+    displayDealerCard()
+    resultEl.textContent = "dealer wins"
+    if (Number.isInteger(parseInt(betAmountEl.value)))
+    {
+        player.chips = player.chips - parseInt(betAmountEl.value)
+    }
+    message = "Game over"
+    messageEl.textContent = message
+    isAlive = false
+}
+
+function playerWin(betAmountEl) {
+    displayDealerCard()
+    resultEl.textContent = "player wins"
+    if (Number.isInteger(parseInt(betAmountEl.value)))
+    {
+        player.chips = player.chips + parseInt(betAmountEl.value)
+    }
+    message = "Game over"
+    messageEl.textContent = message
+    isAlive = false
 }

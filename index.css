@@ -23,6 +23,11 @@ h1 {
 #chipsp-el {
     color:plum;
 }
+
+#page_pc-el {
+    color:plum;
+}
+
 button {
     color:rgb(87, 183, 129);
     height: 40px;
@@ -74,6 +79,8 @@ button {
     color:rgb(39, 39, 39);
     font-style: italic;
 }
+
+
 
 .modal-title {
     color:rgb(87, 183, 129);
