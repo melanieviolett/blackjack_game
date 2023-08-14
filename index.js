@@ -1,5 +1,3 @@
-console.log(window.innerWidth)
-console.log(window.innerHeight)
 
 let player = {
     name: "",
@@ -35,6 +33,10 @@ const placeBetsEl = document.getElementById("place_bets-el")
 const chipChangesEl = document.getElementById("saveChipChanges-el")
 const savePlayerNameEl = document.getElementById("savePlayerName-el")
 
+
+
+
+
 function getRandomCard() {
     let randomNumber = Math.floor( Math.random()*13 ) + 1
     if (randomNumber > 10) {
@@ -48,7 +50,7 @@ function getRandomCard() {
 
 newGameEl.addEventListener('click', function() {
 
-    stopConfetti()
+    
     pagePcEl.textContent = player.chips
     hasBlackJack = false
 
@@ -189,9 +191,12 @@ function dealerWin(betAmountEl) {
 
 
 function playerWin(betAmountEl) {
+    const jsConfetti = new JSConfetti()
+    jsConfetti.addConfetti()
+    
     displayDealerCard()
     resultEl.textContent = "player wins"
-    startConfetti()
+   
     if (Number.isInteger(parseInt(betAmountEl.value)))
     {
         player.chips = player.chips + parseInt(betAmountEl.value)
