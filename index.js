@@ -1,4 +1,3 @@
-
 let player = {
     name: "",
     chips: 50
@@ -8,7 +7,6 @@ let cards = []
 let dealerCards = []
 let sum = 0
 let dealerSum = 0
-
 
 let hasBlackJack = false
 let isAlive = false
@@ -34,9 +32,6 @@ const chipChangesEl = document.getElementById("saveChipChanges-el")
 const savePlayerNameEl = document.getElementById("savePlayerName-el")
 
 
-
-
-
 function getRandomCard() {
     let randomNumber = Math.floor( Math.random()*13 ) + 1
     if (randomNumber > 10) {
@@ -50,7 +45,6 @@ function getRandomCard() {
 
 newGameEl.addEventListener('click', function() {
 
-    
     pagePcEl.textContent = player.chips
     hasBlackJack = false
 
@@ -114,7 +108,6 @@ function displayDealerCard() {
         dealerCardsEl.textContent += dealerCards[i] + " "
     }
 }
-
 
 standEl.addEventListener('click', function() {
     console.log("Dealer sum: ", dealerSum)
@@ -187,8 +180,6 @@ function dealerWin(betAmountEl) {
     messageEl.textContent = message
     isAlive = false
 }
-
-
 
 function playerWin(betAmountEl) {
     const jsConfetti = new JSConfetti()
