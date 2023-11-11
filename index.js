@@ -33,7 +33,7 @@ const savePlayerNameEl = document.getElementById("savePlayerName-el")
 
 
 function getRandomCard() {
-    let randomNumber = Math.floor( Math.random()*13 ) + 1
+    let randomNumber = Math.floor(Math.random() * 13) + 1
     if (randomNumber > 10) {
         return 10
     } else if (randomNumber === 1) {
@@ -43,7 +43,7 @@ function getRandomCard() {
     }
 }
 
-newGameEl.addEventListener('click', function() {
+newGameEl.addEventListener('click', function () {
 
     pagePcEl.textContent = player.chips
     hasBlackJack = false
@@ -63,7 +63,7 @@ newGameEl.addEventListener('click', function() {
     let secondDealerCard = getRandomCard()
     dealerCards = [firstDealerCard, secondDealerCard]
     dealerSum = firstDealerCard + secondDealerCard
-    
+
     renderGame()
 })
 
@@ -85,7 +85,7 @@ function renderGame() {
         message = "You've got Blackjack!"
         hasBlackJack = true
     } else {
-        message  = "You're out of the game!"
+        message = "You're out of the game!"
         dealerWin(betAmountEl)
         message = "bust"
         dealerSumEl.textContent += dealerSum
@@ -93,12 +93,12 @@ function renderGame() {
     messageEl.textContent = message
 }
 
-hitEl.addEventListener('click', function() {
+hitEl.addEventListener('click', function () {
     if (isAlive === true && hasBlackJack === false) {
         let card = getRandomCard()
         sum += card
         cards.push(card)
-        renderGame()        
+        renderGame()
     }
 })
 
@@ -109,14 +109,12 @@ function displayDealerCard() {
     }
 }
 
-standEl.addEventListener('click', function() {
+standEl.addEventListener('click', function () {
     console.log("Dealer sum: ", dealerSum)
     console.log("Player sum: ", sum)
 
-    if (isAlive === true)
-    {
-        while (dealerSum < 17)
-        {
+    if (isAlive === true) {
+        while (dealerSum < 17) {
             let dealerCard = getRandomCard()
             dealerCards.push(dealerCard)
 
@@ -126,45 +124,40 @@ standEl.addEventListener('click', function() {
 
         // dealer is now standing
         dealerSumEl.textContent = "Sum: " + dealerSum
-        if (dealerSum > 21)
-        {
+        if (dealerSum > 21) {
             playerWin(betAmountEl)
         }
 
-        else if (sum > dealerSum)
-        {
+        else if (sum > dealerSum) {
             playerWin(betAmountEl)
         }
-        else if (sum === dealerSum)
-        {
+        else if (sum === dealerSum) {
             displayDealerCard()
             resultEl.textContent = "tie"
             message = "Game over"
             messageEl.textContent = message
         }
-        else if (sum < dealerSum)
-        {
+        else if (sum < dealerSum) {
             dealerWin(betAmountEl)
         }
     }
-    else
-    {
+    else {
         dealerWin(betAmountEl)
     }
 })
 
-savePlayerNameEl.addEventListener('click', function() {
-    player.name = nameEl.value 
+savePlayerNameEl.addEventListener('click', function () {
+    player.name = nameEl.value
     playerEl.textContent = player.name
     nameEl.value = ""
 })
 
-placeBetsEl.addEventListener('click', function() {
+placeBetsEl.addEventListener('click', function () {
     playerChipsEl.textContent = player.chips
     pagePcEl.textContent = player.chips
 })
 
-chipChangesEl.addEventListener('click', function(){
+chipChangesEl.addEventListener('click', function () {
     playerChipsEl.textContent = player.chips
     pagePcEl.textContent = player.chips
 })
@@ -172,8 +165,7 @@ chipChangesEl.addEventListener('click', function(){
 function dealerWin(betAmountEl) {
     displayDealerCard()
     resultEl.textContent = "dealer wins"
-    if (Number.isInteger(parseInt(betAmountEl.value)))
-    {
+    if (Number.isInteger(parseInt(betAmountEl.value))) {
         player.chips = player.chips - parseInt(betAmountEl.value)
     }
     message = "Game over"
@@ -184,12 +176,11 @@ function dealerWin(betAmountEl) {
 function playerWin(betAmountEl) {
     const jsConfetti = new JSConfetti()
     jsConfetti.addConfetti()
-    
+
     displayDealerCard()
     resultEl.textContent = "player wins"
-   
-    if (Number.isInteger(parseInt(betAmountEl.value)))
-    {
+
+    if (Number.isInteger(parseInt(betAmountEl.value))) {
         player.chips = player.chips + parseInt(betAmountEl.value)
     }
     message = "Game over"
