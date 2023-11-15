@@ -120,9 +120,8 @@ a:hover {
 }
 
 .footer {
-  padding: 50px 0;
   text-align: center;
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   left: 0;
@@ -149,6 +148,7 @@ a:hover {
     transform: translateY(-20px);
   }
 }
+
 
 .btn-primary,
 .btn-primary:hover,
