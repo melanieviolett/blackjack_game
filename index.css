@@ -26,11 +26,19 @@ h5 {
 }
 
 #chipsp-el {
-  color: plum;
+  color: rgb(238, 205, 185);
+}
+
+#bet-amt-el {
+  color: rgb(238, 205, 185)
 }
 
 #page_pc-el {
-  color: plum;
+  color:  rgb(238, 205, 185);
+}
+
+#bet-el {
+  color:rgb(238, 205, 185);
 }
 
 button {
@@ -88,27 +96,28 @@ a:hover {
 }
 
 #place_bets-el {
-  background-color: rgb(122, 214, 226);
+  background-color: rgb(238, 205, 185);
   color: #3c3327;
   font-size: 12px;
   font-weight: bold;
 }
 
 #placeBetsModalLabel {
-  color: rgb(70, 122, 129);
+  color: black;
 }
 
 #saveChipChanges-el {
-  background-color: rgb(70, 122, 129);
+  background-color: black;
   color: white;
 }
 
 #nameModalLabel {
-  color: plum;
+  color: black;
 }
 
 #savePlayerName-el {
-  background-color: plum;
+  background-color: black;
+  color:white;
 }
 
 .header {

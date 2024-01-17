@@ -1,6 +1,7 @@
 let player = {
     name: "",
-    chips: 50
+    chips: 50,
+    bet: 0
 }
 
 let cards = []
@@ -30,6 +31,7 @@ const standEl = document.getElementById("stand-el")
 const placeBetsEl = document.getElementById("place_bets-el")
 const chipChangesEl = document.getElementById("saveChipChanges-el")
 const savePlayerNameEl = document.getElementById("savePlayerName-el")
+const betEl = document.getElementById("bet-el")
 
 
 function getRandomCard() {
@@ -155,11 +157,13 @@ savePlayerNameEl.addEventListener('click', function () {
 placeBetsEl.addEventListener('click', function () {
     playerChipsEl.textContent = player.chips
     pagePcEl.textContent = player.chips
+  
 })
 
 chipChangesEl.addEventListener('click', function () {
     playerChipsEl.textContent = player.chips
     pagePcEl.textContent = player.chips
+    betEl.textContent = betAmountEl.value
 })
 
 function dealerWin(betAmountEl) {
