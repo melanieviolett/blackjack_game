@@ -88,6 +88,10 @@ a:hover {
   width: 80%;
 }
 
+.margint {
+  margin-top:155px
+}
+
 #change_pyr-el {
   background-color: plum;
   color: #3c3327;
